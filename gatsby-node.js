@@ -3,9 +3,7 @@ const path = require(`path`);
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
-  const blogPostTemplate = path.resolve(
-    'src/templates/blogPostTemplate.js'
-  );
+  const blogPostTemplate = path.resolve('src/templates/blogpost.js');
 
   return graphql(`
     {
@@ -27,13 +25,17 @@ exports.createPages = ({ actions, graphql }) => {
 
     const posts = result.data.allMdx.nodes;
 
-    // create page for each mdx file
-    posts.forEach(post => {
+    posts.forEach((post, index) => {
+			const	previous = index === 0 ? null : posts[index - 1]
+			const next = index === posts.length - 1 ? null : posts[index + 1]
+
       createPage({
         path: post.fields.slug,
         component: blogPostTemplate,
         context: {
-          slug: post.fields.slug,
+					slug: post.fields.slug,
+					previous,
+					next,
         },
       });
     });

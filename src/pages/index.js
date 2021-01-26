@@ -1,13 +1,13 @@
 import React from 'react';
+import {Link, graphql} from 'gatsby'
 
 import Layout from '../components/layout'
 import Dump from '../components/dump'
 
-export default ({data}) => {
+export default function HomePage({data}) {
 	
   return (
 		<Layout title="Home">
-			<Dump data={data}/>
 			<h1>Cover Images!</h1>
 			{data.allMdx.nodes.map(({excerpt, frontmatter, fields}) => (
 				<>

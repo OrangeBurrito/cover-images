@@ -7,3 +7,16 @@ body {
 	background: #BABABA;
 	color: #333;
 }
+
+.navigation-btn {
+	display: inline-block;
+	text-decoration: none;
+	background: #333;
+	color: #BABABA;
+	padding: 0rem 1.5rem;
+}
+
+.navigation-btn:hover {
+	color: #fff;
+	border-bottom: 4px solid #fff;
+}
