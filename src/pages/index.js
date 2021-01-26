@@ -9,10 +9,12 @@ export default ({data}) => {
 		<Layout title="Home">
 			<Dump data={data}/>
 			<h1>Cover Images!</h1>
-			{data.allMdx.nodes.map(({excerpt, frontmatter}) => (
+			{data.allMdx.nodes.map(({excerpt, frontmatter, fields}) => (
 				<>
-					<h2>{frontmatter.title}</h2>
-					<p>{frontmatter.date}</p>
+					<Link to={fields.slug}>
+						<h2>{frontmatter.title}</h2>
+						<p>{frontmatter.date}</p>
+					</Link>
 				</>
 			))}
 		</Layout>
@@ -31,6 +33,9 @@ query SITE_INDEX_QUERY {
 			frontmatter {
 				title
 				date
+			}
+			fields {
+				slug
 			}
 		}
 	}
