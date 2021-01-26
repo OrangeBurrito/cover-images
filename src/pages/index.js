@@ -1,5 +1,38 @@
 import React from 'react';
 
-export default () => {
-  return <h1>Cover Images</h1>;
+import Layout from '../components/layout'
+import Dump from '../components/dump'
+
+export default ({data}) => {
+	
+  return (
+		<Layout title="Home">
+			<Dump data={data}/>
+			<h1>Cover Images!</h1>
+			{data.allMdx.nodes.map(({excerpt, frontmatter}) => (
+				<>
+					<h2>{frontmatter.title}</h2>
+					<p>{frontmatter.date}</p>
+				</>
+			))}
+		</Layout>
+	)
 };
+
+export const  query = graphql`
+query SITE_INDEX_QUERY {
+	allMdx(
+		sort: { fields: [frontmatter___date], order: DESC }
+		filter: { frontmatter: { published: { eq: true } } }
+	) {
+		nodes {
+			id
+			excerpt(pruneLength: 60)
+			frontmatter {
+				title
+				date
+			}
+		}
+	}
+}
+`
