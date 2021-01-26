@@ -1,0 +1,24 @@
+{
+  "name": "cover-images-gatsby",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "env-cmd -f .env.development gatsby develop",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "env-cmd": "^10.1.0",
+    "gatsby": "^2.31.1",
+    "gatsby-plugin-mdx": "^1.9.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
