@@ -8,9 +8,22 @@ body {
 	color: #333;
 }
 
+img {
+	height: 150px;
+	width: auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	background: #999;
+	text-decoration: underline;
+}
+
 .navigation-btn {
 	display: inline-block;
-	text-decoration: none;
 	background: #333;
 	color: #BABABA;
 	padding: 0rem 1.5rem;

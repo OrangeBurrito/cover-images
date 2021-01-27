@@ -2,7 +2,6 @@ import React from 'react';
 import {Link, graphql} from 'gatsby'
 
 import Layout from '../components/layout'
-import Dump from '../components/dump'
 
 export default function HomePage({data}) {
 	
@@ -12,6 +11,7 @@ export default function HomePage({data}) {
 			{data.allMdx.nodes.map(({excerpt, frontmatter, fields}) => (
 				<>
 					<Link to={fields.slug}>
+					<img src={frontmatter.cover} alt={frontmatter.coverAlt}></img>
 						<h2>{frontmatter.title}</h2>
 						<p>{frontmatter.date}</p>
 					</Link>
@@ -32,7 +32,9 @@ query SITE_INDEX_QUERY {
 			excerpt(pruneLength: 60)
 			frontmatter {
 				title
-				date
+				date(formatString: "YYYY MMMM Do")
+				cover
+				coverAlt
 			}
 			fields {
 				slug
@@ -41,3 +43,15 @@ query SITE_INDEX_QUERY {
 	}
 }
 `
+
+// {
+// 	childImageSharp {
+// 			fluid(maxWidth: 630) {
+// 				tracedSVG
+// 				aspectRatio
+// 				src
+// 				srcSet
+// 				sizes
+// 			}
+// 		}
+// }

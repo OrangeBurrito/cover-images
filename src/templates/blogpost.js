@@ -10,7 +10,9 @@ query PostBySlug($slug: String!) {
 		body
     frontmatter {
       title
-      date(formatString: "MMMM Do YYYY")
+			date(formatString: "MMMM Do YYYY")
+			cover
+			coverAlt
     }
   }
 }
@@ -22,6 +24,7 @@ export default ({data, pageContext}) => {
 	return (
 		<Layout title='Blog'>
 			<div className="blogpost-wrap" id="key">
+				<img src={frontmatter.cover} alt={frontmatter.coverAlt}></img>
 				<h1 className="post-title">{frontmatter.title}</h1>
 				<p style={{ fontFamily: 'Fira Code' }}>{frontmatter.date}</p>
 				<MDXRenderer>{body}</MDXRenderer>
